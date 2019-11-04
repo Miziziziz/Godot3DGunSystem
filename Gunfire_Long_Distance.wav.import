@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Gunfire_Long_Distance.wav-577475571e4543101ae3d15e63c13bde.sample"
+
+[deps]
+
+source_file="res://Gunfire_Long_Distance.wav"
+dest_files=[ "res://.import/Gunfire_Long_Distance.wav-577475571e4543101ae3d15e63c13bde.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

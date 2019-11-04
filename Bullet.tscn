@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Bullet.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.0999846
+height = 0.68773
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+albedo_color = Color( 1, 0.941176, 0.454902, 1 )
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
+
+[node name="Bullet" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.477102 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.0760446, 0, 0, 0, 0.0760446, 0, 0, 0, 0.524178, 0, 0, 0.493623 )
+mesh = SubResource( 3 )
+material/0 = null

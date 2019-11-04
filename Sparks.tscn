@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -1.56333, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+initial_velocity = 15.0
+angular_velocity = 0.0
+scale = 0.1
+scale_curve = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 0.894118, 0.886275, 0.733333, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+
+[node name="Sparks" type="Particles"]
+transform = Transform( 1, 0, 0, 0, -0.173648, 0.984808, 0, -0.984808, -0.173648, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.86
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )

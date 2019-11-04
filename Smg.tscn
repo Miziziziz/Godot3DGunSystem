@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Gun.gd" type="Script" id=1]
+[ext_resource path="res://gunmat.tres" type="Material" id=2]
+[ext_resource path="res://BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MuzzleFlash.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Gunfire_Long_Distance.wav" type="AudioStream" id=5]
+[ext_resource path="res://MuzzleSmoke.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 2 )
+
+[node name="Smg" type="Spatial"]
+script = ExtResource( 1 )
+is_auto = true
+
+[node name="Graphics" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Graphics"]
+transform = Transform( 0.0740021, 0, 0, 0, 0.126484, 0, 0, 0, 0.714261, 0, 0.132223, -0.322352 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Graphics"]
+transform = Transform( 0.0740021, 0, 0, 0, 0.0544572, 0.359894, 0, -0.114161, 0.171678, 0, -0.241732, -0.529717 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Graphics"]
+transform = Transform( 0.0397721, 0, 0, 0, -0.0291108, 0.193659, 0, -0.0614298, -0.0917725, 0, -0.092375, 0.0703819 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="BulletEmitter" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.144298, -1.04377 )
+speed = 100
+
+[node name="MuzzleFlash" parent="." instance=ExtResource( 4 )]
+
+[node name="GunshotAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="MuzzleSmoke" parent="." instance=ExtResource( 6 )]
+[connection signal="fire" from="." to="BulletEmitter" method="emit_bullet"]
+[connection signal="fire" from="." to="MuzzleFlash" method="emit_flash"]
+[connection signal="fire" from="." to="GunshotAudio" method="play"]
+[connection signal="fire" from="." to="MuzzleSmoke" method="emit_smoke"]
